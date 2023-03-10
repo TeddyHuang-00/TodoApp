@@ -4,10 +4,16 @@ import type TaskItemType from '@/types/TaskItemType'
 
 export const useTaskStore = defineStore('taskStore', () => {
     const tasks = ref([] as TaskItemType[])
-    const pinned = computed(() => tasks.value.filter(task => task.pinned))
-    const unpinned = computed(() => tasks.value.filter(task => !task.pinned))
-    const favorites = computed(() => tasks.value.filter(task => task.favorite))
-    const pinnedFirst = computed(() => [...pinned.value, ...unpinned.value])
+    const favorites = computed(() => [
+        ...tasks.value.filter(task => task.favorite && !task.completed),
+        ...tasks.value.filter(task => task.favorite && task.completed)
+    ])
+    const sortedTasks = computed(() => [
+        ...tasks.value.filter(task => task.pinned && !task.completed),
+        ...tasks.value.filter(task => task.pinned && task.completed),
+        ...tasks.value.filter(task => !task.pinned && !task.completed),
+        ...tasks.value.filter(task => !task.pinned && task.completed),
+    ])
 
     const deleteTask = (uuid: string) => {
         tasks.value = tasks.value.filter(task => task.uuid !== uuid)
@@ -52,10 +58,8 @@ export const useTaskStore = defineStore('taskStore', () => {
 
     return {
         tasks,
-        pinned,
-        unpinned,
         favorites,
-        pinnedFirst,
+        sortedTasks,
         deleteTask,
         addTask,
         toggleCompleted,

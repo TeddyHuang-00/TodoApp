@@ -1,6 +1,11 @@
 <template>
   <div
-    class="container py-5 px-7 bg-gray-50 rounded-xl shadow-lg flex justify-between items-center"
+    class="container py-5 px-7 rounded-xl shadow-lg flex justify-between items-center transition-colors duration-300"
+    :class="{
+      'bg-gray-200': task.completed,
+      'bg-gray-50 ': !task.completed,
+      'blur-[2px]': task.completed,
+    }"
   >
     <h3 class="inline-block">{{ task.title }}</h3>
     <div class="inline-block text-right">
@@ -25,6 +30,12 @@
       ></i>
     </div>
   </div>
+  <Transition name="strike" appear>
+    <div
+      v-if="task.completed"
+      class="absolute content-[''] top-1/2 left-0 border-b-2 border-b-slate-700 w-full scale-105 rotate-3"
+    ></div>
+  </Transition>
 </template>
 
 <script setup lang="ts">
@@ -44,5 +55,14 @@ const taskStore = useTaskStore();
 <style>
 .icon {
   @apply text-lg ml-3 cursor-pointer text-gray-300 transition-colors;
+}
+
+.strike-enter-from,
+.strike-leave-to {
+  @apply opacity-0;
+}
+.strike-enter-active,
+.strike-leave-active {
+  @apply transition-all duration-200;
 }
 </style>

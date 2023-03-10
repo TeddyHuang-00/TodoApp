@@ -17,7 +17,7 @@
             <p class="my-5 mx-auto">All tasks</p>
             <TransitionGroup tag="div" name="task-list" appear>
               <div
-                v-for="task in taskStore.pinnedFirst"
+                v-for="task in taskStore.sortedTasks"
                 :key="task.uuid"
                 class="todo-item-container"
               >
@@ -92,7 +92,7 @@ const handleComplaint = () => {
   @apply inline-block ml-5 bg-gray-50 rounded-md border-none shadow-lg py-2 px-4 cursor-pointer text-sm font-medium text-gray-700 hover:shadow-md hover:bg-gray-100 transition-all;
 }
 .todo-item-container {
-  @apply my-5 mx-auto;
+  @apply my-5 mx-auto relative;
 }
 
 /* Toast animation */

@@ -3,6 +3,7 @@
 github:
 	rm -rf dist
 	npx vite build --base=/TodoApp/
+	cp -r .github dist
 	cd dist && \
 	git init && \
 	git add -A && \

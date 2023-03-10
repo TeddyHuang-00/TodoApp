@@ -7,43 +7,48 @@
     </nav>
 
     <!-- Task list -->
-    <div class="container max-w-screen-sm" v-if="filter == 'all'">
-      <div v-if="!taskStore.tasks.length">
-        <p class="my-10 text-center">Nothing to do yet... Add one now!</p>
+    <Transition name="switch" mode="out-in">
+      <div class="container max-w-screen-sm" v-if="filter == 'all'">
+        <Transition name="switch" mode="out-in">
+          <div v-if="!taskStore.tasks.length">
+            <p class="my-10 text-center">Nothing to do yet... Add one now!</p>
+          </div>
+          <div v-else>
+            <p class="my-5 mx-auto">All tasks</p>
+            <TransitionGroup tag="div" name="task-list" appear>
+              <div
+                v-for="task in taskStore.pinnedFirst"
+                :key="task.uuid"
+                class="todo-item-container"
+              >
+                <TaskOverview :task="task"></TaskOverview>
+              </div>
+            </TransitionGroup>
+          </div>
+        </Transition>
       </div>
-      <div v-else>
-        <p class="my-5 mx-auto">All tasks</p>
-        <div
-          v-for="task in taskStore.pinned"
-          :key="task.uuid"
-          class="todo-item-container"
-        >
-          <TaskOverview :task="task"></TaskOverview>
-        </div>
-        <div
-          v-for="task in taskStore.unpinned"
-          :key="task.uuid"
-          class="todo-item-container"
-        >
-          <TaskOverview :task="task"></TaskOverview>
-        </div>
+      <div class="container max-w-screen-sm" v-else>
+        <Transition name="switch" mode="out-in">
+          <div v-if="!taskStore.favorites.length">
+            <p class="my-10 text-center">
+              No favorite tasks yet... Add one now!
+            </p>
+          </div>
+          <div v-else>
+            <p class="my-5 mx-auto">Favorite tasks</p>
+            <TransitionGroup tag="div" name="task-list" appear>
+              <div
+                v-for="task in taskStore.favorites"
+                :key="task.uuid"
+                class="todo-item-container"
+              >
+                <TaskOverview :task="task"></TaskOverview>
+              </div>
+            </TransitionGroup>
+          </div>
+        </Transition>
       </div>
-    </div>
-    <div class="container max-w-screen-sm" v-else>
-      <div v-if="!taskStore.favorites.length">
-        <p class="my-10 text-center">No favorite tasks yet... Add one now!</p>
-      </div>
-      <div v-else>
-        <p class="my-5 mx-auto">Favorite tasks</p>
-        <div
-          v-for="task in taskStore.favorites"
-          :key="task.uuid"
-          class="todo-item-container"
-        >
-          <TaskOverview :task="task"></TaskOverview>
-        </div>
-      </div>
-    </div>
+    </Transition>
 
     <Teleport to="header">
       <!-- New Task -->
@@ -90,6 +95,7 @@ const handleComplaint = () => {
   @apply my-5 mx-auto;
 }
 
+/* Toast animation */
 .toast-enter-active,
 .toast-leave-active {
   @apply transition-all duration-300;
@@ -98,8 +104,27 @@ const handleComplaint = () => {
 .toast-leave-to {
   @apply opacity-0 -translate-y-20 scale-75;
 }
-.toast-enter-to,
-.toast-leave-from {
-  @apply opacity-100 translate-y-0 scale-100;
+
+/* Task list animation */
+.task-list-enter-active,
+.task-list-leave-active,
+.task-list-move {
+  @apply transition-all duration-300;
+}
+.task-list-enter-from {
+  @apply opacity-0 scale-75;
+}
+.task-list-leave-to {
+  @apply opacity-0 scale-50;
+}
+
+/* Switch status animation */
+.switch-enter-from,
+.switch-leave-to {
+  @apply opacity-0 translate-y-5;
+}
+.switch-enter-active,
+.switch-leave-active {
+  @apply transition-all duration-300;
 }
 </style>

@@ -7,9 +7,7 @@ export const useTaskStore = defineStore('taskStore', () => {
     const pinned = computed(() => tasks.value.filter(task => task.pinned))
     const unpinned = computed(() => tasks.value.filter(task => !task.pinned))
     const favorites = computed(() => tasks.value.filter(task => task.favorite))
-    // const unfavorites = computed(() => tasks.value.filter(task => !task.favorite))
-    // const completed = computed(() => tasks.value.filter(task => task.completed))
-    // const uncompleted = computed(() => tasks.value.filter(task => !task.completed))
+    const pinnedFirst = computed(() => [...pinned.value, ...unpinned.value])
 
     const deleteTask = (uuid: string) => {
         tasks.value = tasks.value.filter(task => task.uuid !== uuid)
@@ -57,9 +55,7 @@ export const useTaskStore = defineStore('taskStore', () => {
         pinned,
         unpinned,
         favorites,
-        // unfavorites,
-        // completed,
-        // uncompleted,
+        pinnedFirst,
         deleteTask,
         addTask,
         toggleCompleted,

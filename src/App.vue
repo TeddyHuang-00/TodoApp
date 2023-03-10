@@ -15,5 +15,4 @@
 
 <script setup lang="ts">
 import { RouterLink, RouterView } from "vue-router";
-import TaskForm from "./components/TaskForm.vue";
 </script>

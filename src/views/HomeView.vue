@@ -47,7 +47,17 @@
 
     <Teleport to="header">
       <!-- New Task -->
-      <TaskForm></TaskForm>
+      <TaskForm @complainEmptyString="handleComplaint"></TaskForm>
+    </Teleport>
+
+    <Teleport to="#app">
+      <Transition name="toast">
+        <ToastNotification
+          message="To-do item should not be empty!"
+          type="error"
+          v-if="showToast"
+        ></ToastNotification>
+      </Transition>
     </Teleport>
   </div>
 </template>
@@ -58,10 +68,18 @@ import TaskOverview from "@/components/TaskOverview.vue";
 import { ref } from "vue";
 import type FilterType from "@/types/FilterType";
 import TaskForm from "@/components/TaskForm.vue";
+import ToastNotification from "@/components/ToastNotification.vue";
 
 const taskStore = useTaskStore();
 taskStore.loadFromLocalStorage();
 const filter = ref("all" as FilterType);
+const showToast = ref(false);
+const handleComplaint = () => {
+  showToast.value = true;
+  setTimeout(() => {
+    showToast.value = false;
+  }, 2000);
+};
 </script>
 
 <style>
@@ -70,5 +88,18 @@ const filter = ref("all" as FilterType);
 }
 .todo-item-container {
   @apply my-5 mx-auto;
+}
+
+.toast-enter-active,
+.toast-leave-active {
+  @apply transition-all duration-300;
+}
+.toast-enter-from,
+.toast-leave-to {
+  @apply opacity-0 -translate-y-20 scale-75;
+}
+.toast-enter-to,
+.toast-leave-from {
+  @apply opacity-100 translate-y-0 scale-100;
 }
 </style>

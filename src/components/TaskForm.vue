@@ -24,6 +24,7 @@ import { ref } from "vue";
 import { v4 as uuid } from "uuid";
 
 const taskStore = useTaskStore();
+const emit = defineEmits<{ (e: "complainEmptyString"): void }>();
 const handleSubmit = () => {
   if (taskTitle.value.length) {
     taskStore.addTask({
@@ -35,6 +36,8 @@ const handleSubmit = () => {
       favorite: false,
     });
     taskTitle.value = "";
+  } else {
+    emit("complainEmptyString");
   }
 };
 const taskTitle = ref("");

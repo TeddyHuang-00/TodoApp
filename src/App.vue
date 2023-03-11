@@ -11,11 +11,18 @@
         <Header></Header>
         <RouterLink :to="{ name: 'home' }">
           <div class="w-full flex flex-col justify-center items-center">
-            <img src="./assets/Logo.svg" alt="Site logo" class="max-w-[5rem]" />
+            <img
+              src="./assets/Logo.svg"
+              alt="Site logo"
+              class="max-w-[10rem]"
+            />
             <h1
               class="m-0 text-2xl pt-0 pb-5 ml-4 font-extrabold text-gray-700 dark:text-slate-200"
             >
-              To-do list
+              <span class="text-primary">To</span>-<span class="text-secondary"
+                >do</span
+              >
+              list
             </h1>
           </div>
         </RouterLink>

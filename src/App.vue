@@ -31,7 +31,7 @@
         class="fixed bottom-0 w-full backdrop-blur-md dark:backdrop-blur-lg transition-all duration-300"
       >
         <div
-          class="py-3 text-center bg-gray-200 dark:bg-slate-900 opacity-75 transition-all duration-300"
+          class="py-2 text-center bg-gray-200 dark:bg-slate-900 opacity-75 transition-all duration-300 text-xs sm:text-sm sm:py-4"
         >
           Made with
           <i class="fa-solid fa-heart text-red-500 dark:text-red-400"></i> by

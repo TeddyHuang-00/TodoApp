@@ -1,6 +1,6 @@
 <template>
   <div
-    class="container py-5 px-7 rounded-xl shadow-lg flex justify-between items-center transition-colors duration-300 dark:drop-shadow-lg"
+    class="container py-5 px-7 rounded-xl shadow-lg grid grid-rows-2 gap-1 sm:flex sm:justify-between items-center transition-colors duration-300 dark:drop-shadow-lg"
     :class="{
       'bg-gray-200 dark:bg-slate-700': task.completed,
       'bg-gray-50 dark:bg-slate-600': !task.completed,
@@ -14,7 +14,9 @@
         {{ task.title }}
       </h3>
     </RouterLink>
-    <div class="inline-block text-right">
+    <div
+      class="flex text-center mx-auto w-full justify-evenly text-2xl pt-2 sm:inline-block sm:text-right sm:text-lg sm:pt-0 sm:w-fit sm:mr-0"
+    >
       <i
         class="icon fa-solid fa-check hover:text-primary"
         :class="{ 'text-secondary': task.completed }"
@@ -39,7 +41,7 @@
   <Transition name="strike" appear>
     <div
       v-if="task.completed"
-      class="absolute content-[''] top-1/2 left-0 border-b-2 border-b-gray-700 dark:border-b-slate-200 w-full scale-105 rotate-3"
+      class="absolute content-[''] top-1/2 left-0 border-b-2 border-b-gray-700 dark:border-b-slate-200 w-full scale-105 sm:rotate-3"
     ></div>
   </Transition>
 </template>
@@ -61,7 +63,7 @@ const taskStore = useTaskStore();
 
 <style>
 .icon {
-  @apply text-lg ml-3 cursor-pointer text-gray-300 transition-colors dark:text-opacity-90;
+  @apply ml-3 cursor-pointer text-gray-300 transition-colors dark:text-opacity-90;
 }
 
 .strike-enter-from,

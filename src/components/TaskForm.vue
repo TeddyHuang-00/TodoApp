@@ -1,7 +1,7 @@
 <template>
   <form
     @submit.prevent="handleSubmit"
-    class="max-w-lg py-4 my-0 mx-auto grid grid-cols-[3fr_1fr] gap-3"
+    class="max-w-lg p-4 my-0 mx-auto grid sm:grid-cols-[3fr_1fr] gap-3"
   >
     <input
       class="border-none p-3 rounded-lg bg-gray-50 text-gray-600 shadow-lg focus:shadow-md focus:outline-secondary dark:bg-slate-800 dark:text-slate-200 dark:focus:bg-slate-700 dark:drop-shadow-lg dark:focus:drop-shadow-md transition-all duration-300"

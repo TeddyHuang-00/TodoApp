@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full justify-between p-3 flex text-2xl">
+  <div class="w-full justify-between p-3 flex text-lg sm:text-2xl">
     <div class="pl-5">
       <a href="https://github.com/TeddyHuang-00/TodoApp">
         <i class="fa-brands fa-github"></i>

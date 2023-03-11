@@ -26,6 +26,22 @@
           <component :is="Component"></component>
         </Transition>
       </RouterView>
+
+      <footer
+        class="fixed bottom-0 w-full backdrop-blur-md dark:backdrop-blur-lg transition-all duration-300"
+      >
+        <div
+          class="py-3 text-center bg-gray-200 dark:bg-slate-900 opacity-75 transition-all duration-300"
+        >
+          Made with
+          <i class="fa-solid fa-heart text-red-500 dark:text-red-400"></i> by
+          TeddyHuang-00 &CenterDot; Powered by
+          <span class="text-green-600 dark:text-green-400">Vue 3</span> &amp;
+          <span class="text-cyan-500 dark:text-cyan-400">Tailwind CSS</span>
+          &amp;
+          <span class="text-blue-500 dark:text-blue-500"> TypeScript </span>
+        </div>
+      </footer>
     </div>
   </main>
 </template>

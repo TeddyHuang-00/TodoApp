@@ -11,11 +11,14 @@
     </div>
     <div v-else>
       <div>
-        <h3
-          class="text-xl max-w-sm py-3 my-5 mx-auto bg-gray-50 rounded-lg shadow-lg dark:bg-slate-700"
-        >
-          {{ task.title }}
-        </h3>
+        <h2 class="pb-5 text-xl">Task detail</h2>
+        <RouterLink :to="{ name: 'home' }">
+          <h3
+            class="text-lg max-w-sm py-3 my-5 mx-auto bg-gray-50 rounded-lg shadow-lg dark:bg-slate-700"
+          >
+            {{ task.title }}
+          </h3>
+        </RouterLink>
         <TaskDetailForm
           :value="task.description"
           @change="handleChange"

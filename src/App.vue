@@ -3,17 +3,17 @@
     :class="{ dark: theme === 'dark' || (theme === 'auto' && prefersDark) }"
   >
     <div
-      class="font-Noto pb-20 min-h-screen bg-gray-100 text-gray-800 m-0 bg-scroll dark:bg-slate-800 dark:text-slate-300"
+      class="font-Noto pb-20 min-h-screen bg-gray-100 text-gray-800 m-0 bg-scroll dark:bg-slate-800 dark:text-slate-300 transition-all duration-300"
     >
       <header
-        class="bg-gray-100 text-gray-900 py-5 text-center items-center shadow-xl dark:bg-slate-900 dark:text-slate-300"
+        class="bg-gray-100 text-gray-900 py-5 text-center items-center shadow-xl dark:bg-slate-900 dark:text-slate-300 transition-all duration-300"
       >
         <Header></Header>
         <RouterLink :to="{ name: 'home' }">
           <div class="w-full flex flex-col justify-center items-center">
             <img src="./assets/Logo.svg" alt="Site logo" class="max-w-[5rem]" />
             <h1
-              class="m-0 text-2xl pt-0 ml-4 font-extrabold text-gray-700 dark:text-slate-200"
+              class="m-0 text-2xl pt-0 pb-5 ml-4 font-extrabold text-gray-700 dark:text-slate-200"
             >
               To-do list
             </h1>

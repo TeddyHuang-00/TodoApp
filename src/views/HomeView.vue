@@ -59,7 +59,7 @@
       <Transition name="toast">
         <ToastNotification
           message="To-do item should not be empty!"
-          type="error"
+          msgtype="error"
           v-if="showToast"
         ></ToastNotification>
       </Transition>
@@ -76,7 +76,6 @@ import TaskForm from "@/components/TaskForm.vue";
 import ToastNotification from "@/components/ToastNotification.vue";
 
 const taskStore = useTaskStore();
-taskStore.loadFromLocalStorage();
 const filter = ref("all" as FilterType);
 const showToast = ref(false);
 const handleComplaint = () => {
@@ -89,7 +88,7 @@ const handleComplaint = () => {
 
 <style>
 .nav-button {
-  @apply inline-block ml-5 bg-gray-50 rounded-md border-none shadow-lg py-2 px-4 cursor-pointer text-sm font-medium text-gray-700 hover:shadow-md hover:bg-gray-100 transition-all;
+  @apply inline-block ml-5 bg-gray-50 rounded-md border-none shadow-lg py-2 px-4 cursor-pointer text-sm font-medium text-gray-700 hover:shadow-md hover:bg-gray-100 focus:shadow-md focus:bg-gray-100 transition-all;
 }
 .todo-item-container {
   @apply my-5 mx-auto relative;

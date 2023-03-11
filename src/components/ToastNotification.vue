@@ -4,20 +4,20 @@
       <div
         class="flex items-center text-white max-w-sm w-full shadow-2xl rounded-xl overflow-hidden mx-auto"
         :class="{
-          'bg-red-400': type === 'error',
-          'bg-yellow-400': type === 'warning',
-          'bg-blue-400': type === 'info',
-          'bg-green-400': type === 'success',
+          'bg-red-400': msgtype === 'error',
+          'bg-yellow-400': msgtype === 'warning',
+          'bg-blue-400': msgtype === 'info',
+          'bg-green-400': msgtype === 'success',
         }"
       >
         <div class="w-12 border-r px-4 text-lg">
-          <i class="fa-solid fa-circle-xmark" v-if="type === 'error'"></i>
+          <i class="fa-solid fa-circle-xmark" v-if="msgtype === 'error'"></i>
           <i
             class="fa-solid fa-circle-exclamation"
-            v-if="type === 'warning'"
+            v-if="msgtype === 'warning'"
           ></i>
-          <i class="fa-solid fa-circle-info" v-if="type === 'info'"></i>
-          <i class="fa-solid fa-circle-check" v-if="type === 'success'"></i>
+          <i class="fa-solid fa-circle-info" v-if="msgtype === 'info'"></i>
+          <i class="fa-solid fa-circle-check" v-if="msgtype === 'success'"></i>
         </div>
         <div class="flex items-center px-2 py-3 mx-3">
           {{ message }}
@@ -36,8 +36,8 @@ defineProps({
     type: String,
     required: true,
   },
-  type: {
-    type: Object as PropType<ToastMessageType>,
+  msgtype: {
+    type: String as PropType<ToastMessageType>,
     default: "info",
   },
 });

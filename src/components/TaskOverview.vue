@@ -7,7 +7,13 @@
       'blur-[2px]': task.completed,
     }"
   >
-    <h3 class="inline-block">{{ task.title }}</h3>
+    <RouterLink :to="{ name: 'task-detail', params: { uuid: task.uuid } }">
+      <h3
+        class="inline-block hover:scale-105 hover:opacity-90 transition-all duration-100"
+      >
+        {{ task.title }}
+      </h3>
+    </RouterLink>
     <div class="inline-block text-right">
       <i
         class="icon fa-solid fa-check hover:text-primary"
@@ -42,6 +48,7 @@
 import { useTaskStore } from "@/stores/TaskStore";
 import type TaskItemType from "@/types/TaskItemType";
 import type { PropType } from "vue";
+import { RouterLink } from "vue-router";
 
 defineProps({
   task: {

@@ -3,7 +3,16 @@ import { defineStore } from 'pinia'
 import type TaskItemType from '@/types/TaskItemType'
 
 export const useTaskStore = defineStore('taskStore', () => {
-    const tasks = ref([] as TaskItemType[])
+    const loadFromLocalStorage = () => {
+        const tasksFromLocalStorage = localStorage.getItem('to-do-list')
+        if (tasksFromLocalStorage)
+            return JSON.parse(tasksFromLocalStorage) as TaskItemType[]
+        return [] as TaskItemType[]
+    }
+    const storeToLocalStorage = () => {
+        localStorage.setItem('to-do-list', JSON.stringify(tasks.value))
+    }
+    const tasks = ref(loadFromLocalStorage() as TaskItemType[])
     const favorites = computed(() => [
         ...tasks.value.filter(task => task.favorite && !task.completed),
         ...tasks.value.filter(task => task.favorite && task.completed)
@@ -21,6 +30,25 @@ export const useTaskStore = defineStore('taskStore', () => {
     }
     const addTask = (task: TaskItemType) => {
         tasks.value.push(task)
+        storeToLocalStorage()
+    }
+    const getTask = (uuid: string) => {
+        let result = null as TaskItemType | null
+        for (const task of tasks.value) {
+            if (task.uuid === uuid) {
+                result = task
+                break
+            }
+        }
+        return result
+    }
+    const updateTask = (uuid: string, desription: string) => {
+        for (const task of tasks.value) {
+            if (task.uuid === uuid) {
+                task.description = desription
+                break
+            }
+        }
         storeToLocalStorage()
     }
     const toggleCompleted = (uuid: string) => {
@@ -47,14 +75,6 @@ export const useTaskStore = defineStore('taskStore', () => {
         })
         storeToLocalStorage()
     }
-    const loadFromLocalStorage = () => {
-        const tasksFromLocalStorage = localStorage.getItem('to-do-list')
-        if (tasksFromLocalStorage)
-            tasks.value = JSON.parse(tasksFromLocalStorage)
-    }
-    const storeToLocalStorage = () => {
-        localStorage.setItem('to-do-list', JSON.stringify(tasks.value))
-    }
 
     return {
         tasks,
@@ -62,9 +82,10 @@ export const useTaskStore = defineStore('taskStore', () => {
         sortedTasks,
         deleteTask,
         addTask,
+        getTask,
+        updateTask,
         toggleCompleted,
         toggleFavorite,
         togglePinned,
-        loadFromLocalStorage,
     }
 })

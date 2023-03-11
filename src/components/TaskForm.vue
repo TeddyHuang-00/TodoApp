@@ -4,14 +4,14 @@
     class="max-w-lg pt-5 my-0 mx-auto grid grid-cols-[3fr_1fr] gap-3"
   >
     <input
-      class="border-none p-3 rounded-lg text-gray-600 shadow-lg focus:shadow-md transition-shadow"
+      class="border-none p-3 rounded-lg text-gray-600 shadow-lg focus:shadow-md transition-shadow focus:ring-primary focus:border-primary"
       type="text"
       placeholder="I need to..."
       @keypress.Enter="handleSubmit"
       v-model="taskTitle"
     />
     <button
-      class="bg-primary border-none p-3 rounded-lg cursor-pointer shadow-lg hover:shadow-md transition-shadow"
+      class="bg-primary border-none p-3 rounded-lg cursor-pointer shadow-lg hover:shadow-md focus:shadow-md transition-shadow"
     >
       Add
     </button>

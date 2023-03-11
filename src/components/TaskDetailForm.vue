@@ -3,7 +3,7 @@
     <textarea
       type="text"
       :rows="taskDescription.split('\n').length + 1"
-      class="p-5 rounded-xl shadow-lg resize-none bg-white focus:ring-primary focus:border-primary"
+      class="p-5 rounded-xl shadow-lg resize-none bg-white focus:ring-primary focus:border-primary dark:bg-slate-600"
       placeholder="To do this, I need to..."
       v-model.lazy.trim="taskDescription"
     />

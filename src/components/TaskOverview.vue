@@ -2,8 +2,8 @@
   <div
     class="container py-5 px-7 rounded-xl shadow-lg flex justify-between items-center transition-colors duration-300"
     :class="{
-      'bg-gray-200': task.completed,
-      'bg-gray-50 ': !task.completed,
+      'bg-gray-200 dark:bg-slate-700': task.completed,
+      'bg-gray-50 dark:bg-slate-600': !task.completed,
       'blur-[2px]': task.completed,
     }"
   >
@@ -39,7 +39,7 @@
   <Transition name="strike" appear>
     <div
       v-if="task.completed"
-      class="absolute content-[''] top-1/2 left-0 border-b-2 border-b-slate-700 w-full scale-105 rotate-3"
+      class="absolute content-[''] top-1/2 left-0 border-b-2 border-b-gray-700 dark:border-b-slate-200 w-full scale-105 rotate-3"
     ></div>
   </Transition>
 </template>
@@ -61,7 +61,7 @@ const taskStore = useTaskStore();
 
 <style>
 .icon {
-  @apply text-lg ml-3 cursor-pointer text-gray-300 transition-colors;
+  @apply text-lg ml-3 cursor-pointer text-gray-300 transition-colors dark:text-opacity-90;
 }
 
 .strike-enter-from,

@@ -12,7 +12,7 @@
     <div v-else>
       <div>
         <h3
-          class="text-xl max-w-sm py-3 my-5 mx-auto bg-gray-50 rounded-lg shadow-lg"
+          class="text-xl max-w-sm py-3 my-5 mx-auto bg-gray-50 rounded-lg shadow-lg dark:bg-slate-700"
         >
           {{ task.title }}
         </h3>

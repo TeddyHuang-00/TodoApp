@@ -10,11 +10,11 @@
       <p>Oops, nothing here.</p>
     </div>
     <div v-else>
-      <div>
+      <div class="max-w-sm mx-auto">
         <h2 class="pb-5 text-xl">Task detail</h2>
         <RouterLink :to="{ name: 'home' }">
           <h3
-            class="text-lg max-w-sm py-3 my-5 mx-auto bg-gray-50 rounded-lg shadow-lg dark:bg-slate-700 dark:drop-shadow-lg"
+            class="w-full text-lg py-3 my-5 bg-gray-50 rounded-lg shadow-lg dark:bg-slate-700 dark:drop-shadow-lg"
           >
             {{ task.title }}
           </h3>

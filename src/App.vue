@@ -6,7 +6,7 @@
       class="font-Noto pb-20 min-h-screen bg-gray-100 text-gray-800 m-0 bg-scroll dark:bg-slate-800 dark:text-slate-300 transition-all duration-300"
     >
       <header
-        class="bg-gray-100 text-gray-900 py-5 text-center items-center shadow-xl dark:bg-slate-900 dark:text-slate-300 transition-all duration-300"
+        class="bg-gray-100 text-gray-900 py-5 text-center items-center shadow-xl dark:bg-slate-900 dark:text-slate-300 transition-all duration-300 dark:drop-shadow-lg"
       >
         <Header></Header>
         <RouterLink :to="{ name: 'home' }">

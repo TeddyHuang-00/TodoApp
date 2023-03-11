@@ -88,7 +88,7 @@ const handleComplaint = () => {
 
 <style>
 .nav-button {
-  @apply inline-block ml-5 bg-gray-50 rounded-md border-none shadow-lg py-2 px-4 cursor-pointer text-sm font-medium text-gray-700 hover:shadow-md hover:bg-gray-100 focus:shadow-md focus:bg-gray-100  dark:bg-slate-700 dark:text-slate-200 dark:hover:bg-slate-600 dark:focus:bg-slate-600 transition-all duration-300;
+  @apply inline-block ml-5 bg-gray-50 rounded-md border-none shadow-lg py-2 px-4 cursor-pointer text-sm font-medium text-gray-700 hover:shadow-md hover:bg-gray-100 focus:shadow-md focus:bg-gray-100  dark:bg-slate-700 dark:text-slate-200 dark:hover:bg-slate-600 dark:focus:bg-slate-600 dark:drop-shadow-lg transition-all duration-300;
 }
 .todo-item-container {
   @apply my-5 mx-auto relative;

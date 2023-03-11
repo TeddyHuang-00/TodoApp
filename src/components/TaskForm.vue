@@ -4,14 +4,14 @@
     class="max-w-lg py-4 my-0 mx-auto grid grid-cols-[3fr_1fr] gap-3"
   >
     <input
-      class="border-none p-3 rounded-lg bg-gray-50 text-gray-600 shadow-lg focus:shadow-md focus:ring-primary focus:border-primary dark:bg-slate-800 dark:text-slate-200 dark:focus:bg-slate-700 transition-all duration-300"
+      class="border-none p-3 rounded-lg bg-gray-50 text-gray-600 shadow-lg focus:shadow-md focus:outline-secondary dark:bg-slate-800 dark:text-slate-200 dark:focus:bg-slate-700 dark:drop-shadow-lg dark:focus:drop-shadow-md transition-all duration-300"
       type="text"
       placeholder="I need to..."
       @keypress.Enter="handleSubmit"
       v-model="taskTitle"
     />
     <button
-      class="bg-primary border-none p-3 rounded-lg cursor-pointer shadow-lg hover:shadow-md focus:shadow-md transition-shadow text-gray-800 font-semibold"
+      class="bg-primary border-none p-3 rounded-lg cursor-pointer shadow-lg hover:shadow-md focus:shadow-md transition-shadow text-gray-800 font-semibold dark:drop-shadow-lg dark:focus:drop-shadow-md dark:hover:drop-shadow-md"
     >
       Add
     </button>

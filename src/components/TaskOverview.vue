@@ -1,6 +1,6 @@
 <template>
   <div
-    class="container py-5 px-7 rounded-xl shadow-lg flex justify-between items-center transition-colors duration-300"
+    class="container py-5 px-7 rounded-xl shadow-lg flex justify-between items-center transition-colors duration-300 dark:drop-shadow-lg"
     :class="{
       'bg-gray-200 dark:bg-slate-700': task.completed,
       'bg-gray-50 dark:bg-slate-600': !task.completed,

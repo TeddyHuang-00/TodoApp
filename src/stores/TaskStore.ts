@@ -29,6 +29,8 @@ export const useTaskStore = defineStore('taskStore', () => {
         storeToLocalStorage()
     }
     const addTask = (task: TaskItemType) => {
+        if (tasks.value.find(t => t.uuid === task.uuid))
+            return
         tasks.value.push(task)
         storeToLocalStorage()
     }

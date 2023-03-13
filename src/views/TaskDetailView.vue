@@ -19,6 +19,17 @@
             {{ task.title }}
           </h3>
         </RouterLink>
+        <div class="w-full flex flex-wrap gap-2 pb-5">
+          <div v-for="tag in task.tags || []" :key="tag">
+            <p
+              class="px-3 py-1 rounded-3xl shadow-md bg-gray-200 dark:bg-slate-700 dark:drop-shadow-md cursor-pointer"
+              @click="taskStore.removeTag(task!.uuid, tag)"
+            >
+              {{ tag }}
+            </p>
+          </div>
+          <TagForm :task="task"></TagForm>
+        </div>
         <TaskDetailForm
           :value="task.description"
           @change="handleChange"
@@ -29,6 +40,7 @@
 </template>
 
 <script setup lang="ts">
+import TagForm from "@/components/TagForm.vue";
 import TaskDetailForm from "@/components/TaskDetailForm.vue";
 import ToastNotification from "@/components/ToastNotification.vue";
 import { useTaskStore } from "@/stores/TaskStore";

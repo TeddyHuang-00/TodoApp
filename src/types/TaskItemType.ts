@@ -5,6 +5,7 @@ interface TaskItemType {
     completed: boolean;
     favorite: boolean;
     pinned: boolean;
+    tags?: string[];
 }
 
 export default TaskItemType;

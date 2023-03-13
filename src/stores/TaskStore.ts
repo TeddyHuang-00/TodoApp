@@ -23,7 +23,47 @@ export const useTaskStore = defineStore('taskStore', () => {
         ...tasks.value.filter(task => !task.pinned && !task.completed),
         ...tasks.value.filter(task => !task.pinned && task.completed),
     ])
+    const allTags = computed(() => {
+        let tags: string[] = [];
+        tasks.value.forEach(
+            task => {
+                if (task.tags) tags = [...tags, ...task.tags]
+            })
+        return [...new Set(tags)]
+    })
+    const sortedByTags = computed(() => {
+        let sorted = {} as { [key: string]: TaskItemType[] }
+        for (const tag of allTags.value) {
+            sorted[tag] = tasks.value.filter(task => task.tags?.includes(tag))
+            sorted[tag] = [
+                ...sorted[tag].filter(t => t.pinned && !t.completed),
+                ...sorted[tag].filter(t => t.pinned && t.completed),
+                ...sorted[tag].filter(t => !t.pinned && !t.completed),
+                ...sorted[tag].filter(t => !t.pinned && t.completed)
+            ]
+        }
+        return sorted
+    })
 
+    const addTag = (uuid: string, tag: string) => {
+        tasks.value = tasks.value.map(task => {
+            if (task.uuid === uuid) {
+                if (!task.tags)
+                    task.tags = []
+                if (!task.tags.includes(tag))
+                    task.tags.push(tag)
+            }
+            return task
+        })
+        storeToLocalStorage()
+    }
+    const removeTag = (uuid: string, tag: string) => {
+        tasks.value = tasks.value.map(task => {
+            if (task.uuid === uuid)
+                task.tags = (task.tags || []).filter(t => t !== tag)
+            return task
+        })
+    }
     const deleteTask = (uuid: string) => {
         tasks.value = tasks.value.filter(task => task.uuid !== uuid)
         storeToLocalStorage()
@@ -82,6 +122,10 @@ export const useTaskStore = defineStore('taskStore', () => {
         tasks,
         favorites,
         sortedTasks,
+        allTags,
+        sortedByTags,
+        addTag,
+        removeTag,
         deleteTask,
         addTask,
         getTask,

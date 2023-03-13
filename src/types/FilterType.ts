@@ -1,3 +1,3 @@
-type FilterType = 'all' | 'favs'
+type FilterType = 'all' | 'favs' | 'tags'
 
 export default FilterType

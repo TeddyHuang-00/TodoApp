@@ -76,4 +76,13 @@ const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
 .routes-leave-to {
   @apply opacity-0 -translate-x-24;
 }
+
+/* Hide scrollbar */
+html::-webkit-scrollbar {
+  display: none;
+}
+html {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
 </style>

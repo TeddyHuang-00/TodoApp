@@ -4,6 +4,7 @@
     <nav class="max-w-screen-sm mt-10 mx-auto text-center">
       <button class="nav-button" @click="filter = 'all'">All</button>
       <button class="nav-button" @click="filter = 'favs'">Favorites</button>
+      <button class="nav-button" @click="filter = 'tags'">Tags</button>
     </nav>
 
     <!-- Task list -->
@@ -27,7 +28,7 @@
           </div>
         </Transition>
       </div>
-      <div class="container max-w-screen-sm" v-else>
+      <div class="container max-w-screen-sm" v-else-if="filter === 'favs'">
         <Transition name="switch" mode="out-in">
           <div v-if="!taskStore.favorites.length">
             <p class="my-10 text-center">
@@ -45,6 +46,27 @@
                 <TaskOverview :task="task"></TaskOverview>
               </div>
             </TransitionGroup>
+          </div>
+        </Transition>
+      </div>
+      <div class="container max-w-screen-sm" v-else-if="filter === 'tags'">
+        <Transition name="switch" mode="out-in">
+          <div v-if="!taskStore.allTags.length">
+            <p class="my-10 text-center">No tags yet... Go add some now!</p>
+          </div>
+          <div v-else>
+            <div v-for="tag in taskStore.allTags" :key="tag">
+              <p class="my-5 mx-auto">{{ tag }}</p>
+              <TransitionGroup tag="div" name="task-list" appear>
+                <div
+                  v-for="task in taskStore.sortedByTags[tag]"
+                  :key="task.uuid + tag"
+                  class="todo-item-container"
+                >
+                  <TaskOverview :task="task"></TaskOverview>
+                </div>
+              </TransitionGroup>
+            </div>
           </div>
         </Transition>
       </div>

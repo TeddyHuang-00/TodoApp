@@ -2,7 +2,7 @@
   <div class="w-8 transition-all duration-300" :class="{ grow: expandInput }">
     <form @submit.prevent="handleSubmit">
       <input
-        class="px-3 py-1 w-full rounded-3xl shadow-md bg-gray-200 dark:bg-slate-700 dark:drop-shadow-md"
+        class="px-3 py-1 w-full rounded-3xl shadow-md bg-gray-200 dark:bg-slate-700 dark:drop-shadow-md focus:outline-primary hover:outline-primary"
         type="text"
         placeholder="+"
         @keypress.Enter="handleSubmit"
